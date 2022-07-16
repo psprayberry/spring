@@ -17,10 +17,10 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
                     .and().httpBasic();
 
         // Deny All Requests inside the Web Application
-        /*http.authorizeRequests().
-                anyRequest().denyAll().
-                and().formLogin()
-                .and().httpBasic();*/
+        // http.authorizeRequests().
+        //         anyRequest().denyAll().
+        //         and().formLogin()
+        //         .and().httpBasic();
     }
 
 }
