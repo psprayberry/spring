@@ -6,6 +6,14 @@
  */
 package pcs;
 /*
+ *   Import features
+ */
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+/*
  *   Define types
  */
 // =============================================================================
@@ -14,9 +22,14 @@ package pcs;
  *   Defines the main part of a Hello World application that uses the Spring 
  *   framework.  This was an attempt to see if I could build a Spring Boot 
  *   application from scratch.
+ * 
+ *   @see RestController
+ *   @see SpringBootApplication
  */
 // =============================================================================
-public final 
+@RestController
+@SpringBootApplication
+public 
 class SpringHelloWorld
 { // begin SpringHelloWorld
    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -25,21 +38,46 @@ class SpringHelloWorld
    /*
     *   Define methods
     */
+   // --------------------------------------------------------------------------
+   //   Method:  SpringHelloWorld.main
+   /*
+    *   Runs the application.
+    *
+    *   @param args an array of {@link String}s containing the command line 
+                    arguments
+    */
+   // --------------------------------------------------------------------------
    public static final
    void
-   main(final String[] notUsed)
+   main(final String[] args)
    { // begin running a SpringHelloWorld instance
-      throw new UnsupportedOperationException("SpringHelloWorld.main() is not available yet");
+      SpringApplication.run(SpringHelloWorld.class, args);
    } // end running a SpringHelloWorld instance
    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   //   Declare private features
+   //   Declare protected features
    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    /*
     *   Define constructors
     */
-   private
+   // --------------------------------------------------------------------------
+   //   Constructor:  SpringHelloWorld
+   /*
+    *   Constructs a default instance.
+    */
+   // --------------------------------------------------------------------------
+   protected
    SpringHelloWorld()
    { // begin constructing a SpringHelloWorld instance
-      throw new UnsupportedOperationException("SpringHelloWorld.<init> is not available yet");
+      super();
    } // end constructing a SpringHelloWorld instance
+   /*
+    *   Define methods
+    */
+   @GetMapping("/hello")
+   protected final 
+   String 
+   hello(@RequestParam(value = "name", defaultValue = "World") String name)
+   { // begin greeting the user
+      return String.format("Hello, %s!", name);
+   } // end greeting the user
 } // end SpringHelloWorld
