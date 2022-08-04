@@ -73,6 +73,12 @@ class SpringHelloWorld
    /*
     *   Define methods
     */
+   // --------------------------------------------------------------------------
+   //   Constructor:  SpringHelloWorld.hello
+   /*
+    *   Displays a welcome message in a browser.
+    */
+   // --------------------------------------------------------------------------
    @GetMapping("/hello")
    protected final 
    String 
