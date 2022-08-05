@@ -10,9 +10,8 @@ package com.eazybytes.eazyschool;
  */
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 /*
  *   Define types
  */
@@ -24,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *   @see SpringBootApplication
  */
 // =============================================================================
-@RestController
+@Controller
 @SpringBootApplication
 public
 class EazyschoolApplication
@@ -41,7 +40,7 @@ class EazyschoolApplication
     *   Runs the application.
     *
     *   @param args an array of {@link String}s containing the command line 
-                    arguments
+    *               arguments
     */
    // --------------------------------------------------------------------------
    public static 
@@ -76,13 +75,11 @@ class EazyschoolApplication
     *   Displays a welcome message in a browser.
     */
    // --------------------------------------------------------------------------
-   @GetMapping("/welcome")
+   @RequestMapping(value = {"", "/", "home"})
    protected final 
    String 
-   hello(@RequestParam(value = "name", defaultValue = "World") String name)
-   { // begin greeting the user
-      return String.format
-                    ("Welcome to the Eazybytes School Web Application, %s!", 
-                      name);
-   } // end greeting the user
+   displayTheHomePage()
+   { // begin displaying the home page
+      return ("home.html");
+   } // end displaying the home page
 } // end the Eazy school application
