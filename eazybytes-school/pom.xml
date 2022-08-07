@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.eazybytes</groupId>
 	<artifactId>eazybytes-school</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>eazybytes-school</name>
 	<description>EazyBytes School Web Application</description>
 

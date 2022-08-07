@@ -95,12 +95,18 @@ class EazyschoolApplication implements WebMvcConfigurer
    /*
     *   Define methods
     */
+   @RequestMapping(value = "/contact")
+   protected final 
+   String
+   displayTheContactPage()
+   { // begin displaying the contact page
+      return ("contact.html");
+   } // end displaying the contact page
    // --------------------------------------------------------------------------
-   //   Constructor:  EazyschoolApplication.hello
+   //   Constructor:  EazyschoolApplication.displayTheHomePage
    /**
-    *   Displays a welcome message in a browser.
+    *   Displays the home page.
     */
-   /* */
    // --------------------------------------------------------------------------
    @RequestMapping(value = {"", "/", "home"})
    protected final 
