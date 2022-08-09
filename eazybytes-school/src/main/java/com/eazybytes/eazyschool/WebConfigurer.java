@@ -1,5 +1,5 @@
 // *****************************************************************************
-//   File:  EazyschoolApplication.java
+//   File:  WebConfigurer.java
 // *****************************************************************************
 /*
  *   Declare the package
@@ -8,23 +8,22 @@ package com.eazybytes.eazyschool;
 /*
  *   Import external features
  */
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /*
  *   Define types
  */
 // =============================================================================
-//   Type:  EazyschoolApplication
+//   Type:  WebConfigurer
 /**
- *   Runs the EazyBytes school web application via Spring Boot.
- * 
- *   @see SpringBootApplication
+ *   Configures static web pages.
  */
 // =============================================================================
-@SpringBootApplication
-public
-class EazyschoolApplication
-{ // begin the Eazy school application
+@Configuration
+public 
+class WebConfigurer implements WebMvcConfigurer
+{ // begin configuring static web pages
    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    //   Define public features
    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,20 +31,21 @@ class EazyschoolApplication
     *   Define methods
     */
    // --------------------------------------------------------------------------
-   //   Method:  EazyschoolApplication.main
+   //   Method:  WebConfigurer.addViewControllers
    /**
-    *   Runs the application.
+    *   Wire in pages without specific controllers.
     *
-    *   @param args an array of {@link String}s containing the command line 
-    *               arguments
+    *   @param to the {@link ViewControllerRegistry} to which to add pages
     */
    // --------------------------------------------------------------------------
-   public static 
+   @Override
+   public final 
    void 
-   main(final String[] args)
-   { // begin running the application
-      SpringApplication.run(EazyschoolApplication.class, args);
-   } // end running the application
+   addViewControllers(final ViewControllerRegistry to)
+   { // begin adding view controllers
+      to.addViewController("/about")  .setViewName("about");
+      to.addViewController("/courses").setViewName("courses");
+   } // end adding view controllers
    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    //   Declare protected features
    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -53,14 +53,14 @@ class EazyschoolApplication
     *   Define constructors
     */
    // --------------------------------------------------------------------------
-   //   Constructor:  EazyschoolApplication
+   //   Constructor:  WebConfigurer
    /**
     *   Constructs a default instance.
     */
    // --------------------------------------------------------------------------
    protected
-   EazyschoolApplication()
-   { // begin constructing a EazyschoolApplication instance
+   WebConfigurer()
+   { // begin constructing a WebConfigurer instance
       super();
-   } // end constructing a EazyschoolApplication instance
-} // end the Eazy school application
+   } // end constructing a WebConfigurer instance
+} // end configuring static web pages
