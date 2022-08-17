@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 /*
  *   Define types
  */
@@ -53,16 +54,29 @@ class HolidaysController
    /**
     *   Displays the contact page.
     *
-    *   @param usingTheModel the {@link Model} to use to display the holidays
+    *   @param includeFestivalHolidays a <code>boolean</code> to indicate 
+    *                                  whether festival holidays should be 
+    *                                  displayed
+    *   @param includeFederalHolidays  a <code>boolean</code> to indicate 
+    *                                  whether federal holidays should be 
+    *                                  displayed
+    *   @param usingTheModel           the {@link Model} to use to display the 
+    *                                  holidays
     */
    // --------------------------------------------------------------------------
    @GetMapping(value = "/holidays")
    protected final 
    String
-   displayTheHolidaysPage(final Model usingTheModel)
+   displayTheHolidaysPage
+     (@RequestParam(name="festival", required=false) boolean includeFestivalHolidays, 
+      @RequestParam(name="federal",  required=false) boolean includeFederalHolidays, 
+      final                                          Model   usingTheModel)
    { // begin displaying the holidays page
       List<Holiday>  theHolidays;
       Holiday.Type[] theTypes;
+      //
+      usingTheModel.addAttribute("festival", includeFestivalHolidays);
+      usingTheModel.addAttribute("federal",  includeFederalHolidays);
       //
       theHolidays = Arrays.asList(
          new Holiday(" Jan 1 ",  "New Year's Day",             Holiday.Type.FESTIVAL),

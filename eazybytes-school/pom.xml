@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.eazybytes</groupId>
 	<artifactId>eazybytes-school</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<name>eazybytes-school</name>
 	<description>EazyBytes School Web Application</description>
 
@@ -35,7 +35,7 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
 		<dependency>
